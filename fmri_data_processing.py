@@ -32,21 +32,16 @@ def process_fMRI_data(input_base_path, output_base_path):
             if not os.path.isdir(session_path):
                 continue
 
-            # Extract session number from session folder
-            session_number = session_folder.split('-')[1]  # Extract session number (e.g., '01' from 'ses-01')
-
             # Create session output folder
             session_output_folder = os.path.join(subject_output_folder, session_folder)
             os.makedirs(session_output_folder, exist_ok=True)
 
             # Iterate over files in the session folder
             for file_name in os.listdir(session_path):
-                if file_name.endswith('_bold.nii.gz'):
-                    # Extract run number from file name
-                    run_number = file_name.split('_run-')[1].split('_')[0]  # Extract run number
+                if file_name.endswith('.nii.gz'):
 
                     # Construct path to corresponding TSV file
-                    tsv_file_name = file_name.replace('_bold.nii.gz', '_events.tsv')
+                    tsv_file_name = file_name.replace('.nii.gz', '_events.tsv')
                     tsv_file_path = os.path.join(session_path, tsv_file_name)
 
                     # Load the NIfTI fMRI data
@@ -71,11 +66,9 @@ def process_fMRI_data(input_base_path, output_base_path):
 
                     # Process each run's events
                     for run_num, events in events_by_run.items():
-                        # Format run number with leading zeros (e.g., '01', '02', ..., '16')
-                        run_number_formatted = f"{int(run_num):02d}"
 
                         # Create run output folder
-                        run_output_folder = os.path.join(session_output_folder, f"run_{run_number_formatted}")
+                        run_output_folder = os.path.join(session_output_folder, f"run-{run_num}")
                         os.makedirs(run_output_folder, exist_ok=True)
 
                         # Loop over each event and save corresponding activation image
@@ -91,7 +84,7 @@ def process_fMRI_data(input_base_path, output_base_path):
                             activation_img = nib.Nifti1Image(activation_img_data, img.affine)
 
                             # Construct the output filename
-                            output_filename = f"fMRI_{subject_folder}_{session_folder}_run-{run_number_formatted}_trial-{trial_number}_{image_name.split('.')[0]}.png"
+                            output_filename = f"fMRI_{subject_folder}_{session_folder}_run-{run_num}_trial-{trial_number}_{image_name.split('.')[0]}.png"
                             output_path = os.path.join(run_output_folder, output_filename)
 
                             # Save the activation image with the constructed filename
