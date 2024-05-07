@@ -2,4 +2,5 @@
 *.idea
 *.xml
 *.Ds_Store
-/images
+/input_images
+/bold_data
