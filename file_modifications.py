@@ -7,7 +7,7 @@ def remove_zero_from_run(filepath):
     directory, filename = os.path.split(filepath)
 
     # Define the pattern to match 'run-' followed by one or two digits
-    pattern = r'(run-)(\d{1,2})(_)'
+    pattern = r'(run-0)(\d{1,2})(_)'
 
     # Use re.sub to replace the matched pattern in the filename
     modified_filename = re.sub(pattern, lambda x: x.group(1) + str(int(x.group(2))) + x.group(3), filename)
@@ -26,7 +26,7 @@ def remove_zero_from_session(filepath):
     directory, filename = os.path.split(filepath)
 
     # Define the pattern to match 'ses-' followed by one or two digits before the file extension
-    pattern = r'(ses-)(\d{1,2})(_)$'
+    pattern = r'(ses-0)(\d{1,2})(_)$'
 
     # Use re.sub to replace the matched session number pattern in the filename
     modified_filename = re.sub(pattern, lambda x: x.group(1) + str(int(x.group(2))) + x.group(3), filename)
@@ -50,12 +50,11 @@ def process_directory(directory):
 
                 # Process the file to remove leading zeros from run and session numbers
                 remove_zero_from_run(filepath)
-                remove_zero_from_session(filepath)
 
 
 if __name__ == "__main__":
     # Specify the top-level directory to process
-    top_directory = "/Users/mihnea/_workspace_/_uni/workshop/fmri_data/images"
+    top_directory = "/Users/mihnea/_workspace_/_uni/workshop/fmri_data/input_images"
 
     # Process all subdirectories within the top-level directory
     for root, dirs, files in os.walk(top_directory):
