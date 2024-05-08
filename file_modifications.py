@@ -1,23 +1,10 @@
 import os
-import re
 
 
-def add_run_number(filepath):
-    directory, filename = os.path.split(filepath)
-
-    # Separate the filename and extension
-    name, ext = os.path.splitext(filename)
-
-    # Check if any 'run' number exists (assuming they always end with an underscore)
-    if not re.search(r'run-\d+_', name):
-        name = name + '_run-10'  # Insert 'run-10' before the extension
-
-    modified_filename = name + ext
-    new_filepath = os.path.join(directory, modified_filename)
-
-    if filepath != new_filepath:
-        os.rename(filepath, new_filepath)
-        print(f"Renamed: {filepath} -> {new_filepath}")
+def delete_task_localizer_files(filepath):
+    if "task-localizer" in filepath:
+        os.remove(filepath)
+        print(f"Deleted: {filepath}")
 
 
 def remove_leading_zeros(filepath):
@@ -45,7 +32,7 @@ def process_session_directory(session_directory):
         if filename.endswith('.nii.gz') or filename.endswith('.tsv'):
             filepath = os.path.join(session_directory, filename)
             remove_leading_zeros(filepath)
-            add_run_number(filepath)
+            delete_task_localizer_files(filepath)
 
 
 if __name__ == "__main__":
