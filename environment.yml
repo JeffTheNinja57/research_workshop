@@ -1,0 +1,9 @@
+name: my_fmri_env
+channels:
+  - conda-forge
+dependencies:
+  - nibabel
+  - matplotlib
+  - nilearn
+  - pandas
+  - python=3.11

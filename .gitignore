@@ -2,6 +2,7 @@
 *.idea
 *.xml
 *.Ds_Store
-/input_images
+input_images
 /bold_data
 .idx
+output_images
