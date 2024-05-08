@@ -2,8 +2,8 @@ name: my_fmri_env
 channels:
   - conda-forge
 dependencies:
-  - nibabel
-  - matplotlib
-  - nilearn
-  - pandas
+  - nibabel~=5.2.1
+  - matplotlib~=3.8.4
+  - numpy~=1.26.4
+  - nilearn~=0.10.4
   - python=3.11
