@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 ```bash
 python file_modifications.py
-python fmri_data_processing.py /path/to/input/data /path/to/output/images
+python fmri_data_processing.py
 ```
 
 * Replace `/path/to/input/data`  with the actual path to your input fMRI data.
