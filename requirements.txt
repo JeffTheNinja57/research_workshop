@@ -1,4 +1,6 @@
 nibabel~=5.2.1
-matplotlib~=3.8.4
 numpy~=1.26.4
 nilearn~=0.10.4
+pandas~=1.4.1
+matplotlib~=3.5.1
+multiprocessing

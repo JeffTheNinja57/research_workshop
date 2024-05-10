@@ -7,3 +7,6 @@ dependencies:
   - numpy~=1.26.4
   - nilearn~=0.10.4
   - python=3.11
+  - tensorflow-deps  # Includes necessary dependencies
+  - tensorflow-macos
+  - tensorflow-metal
