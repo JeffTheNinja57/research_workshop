@@ -1,4 +1,4 @@
-# Research Workshop
+# Research Workshop CSAI 2024 - Syntax Sentinels group
 
 ## Overview
 This repository contains the code for the fMRI data processing described in our research paper. The project focuses on preprocessing fMRI data to generate embeddings suitable for machine learning models, particularly autoencoders.
